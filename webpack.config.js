@@ -21,5 +21,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({title: "开发环境"})
   ],
-  devtool: 'inline-source-map'
+  devtool: 'inline-source-map',
+  devServer: {
+    static: './dist'
+  }
 }
