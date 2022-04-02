@@ -5,7 +5,22 @@ module.exports = {
   mode:'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js'
+    another: './src/another-module.js'
+    // index: {
+    //   import: './src/index.js',
+    //   dependOn: 'shared'
+    // },
+    // another: {
+    //   import: './src/another-module.js',
+    //   dependOn: 'shared'
+    // },
+    // shared: 'lodash'
+  },
+  optimization: {
+    // runtimeChunk: 'single'
+    splitChunks: {
+      chunks: "all"
+    }
   },
   output: {
     filename: "[name].bundle.js",
@@ -19,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({title: "开发环境"})
+    new HtmlWebpackPlugin({title: "代码分割"})
   ],
   devtool: 'inline-source-map',
   devServer: {
