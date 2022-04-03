@@ -5,7 +5,7 @@ module.exports = {
   mode:'development',
   entry: {
     index: './src/index.js',
-    another: './src/another-module.js'
+    // another: './src/another-module.js'
     // index: {
     //   import: './src/index.js',
     //   dependOn: 'shared'
@@ -16,14 +16,14 @@ module.exports = {
     // },
     // shared: 'lodash'
   },
-  optimization: {
-    // runtimeChunk: 'single'
-    splitChunks: {
-      chunks: "all"
-    }
-  },
+  // optimization: {
+  //   // runtimeChunk: 'single'
+  //   splitChunks: {
+  //     chunks: "all"
+  //   }
+  // },
   output: {
-    filename: "[name].bundle.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
@@ -34,7 +34,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({title: "代码分割"})
+    new HtmlWebpackPlugin({title: "Caching"})
   ],
   devtool: 'inline-source-map',
   devServer: {
