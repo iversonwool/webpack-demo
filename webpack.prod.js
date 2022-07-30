@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  mode:'development',
+  mode:'production',
   entry: {
     index: './src/index.js',
     // another: './src/another-module.js'
@@ -30,14 +30,25 @@ module.exports = {
   module: {
     rules: [
       {test: /\.css$/i, use: ['style-loader', 'css-loader']},
-      {test: /\.(png|jpg|svg|jpeg|gif)$/i, type: "asset/resource"}
+      {
+        test: /\.(png|jpg|svg|jpeg|gif)$/i,
+        // type: "asset/resource",
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash:8].[ext]"
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({title: "Caching"})
   ],
-  devtool: 'inline-source-map',
-  devServer: {
-    static: './dist'
-  }
+  // devtool: 'inline-source-map',
+  // devServer: {
+  //   static: './dist'
+  // }
 }

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import './style.css'
-// import Icon from './notion-avatar.png'
+import Icon from './notion-avatar.png'
 import printMe from "./print";
 
 function component() {
@@ -15,9 +15,9 @@ function component() {
   btn.innerHTML = 'Click me and check the console!'
   btn.onclick = printMe
   element.appendChild(btn)
-  // const img = document.createElement('img')
-  // img.src = Icon
-  // element.appendChild(img)
+  const img = document.createElement('img')
+  img.src = Icon
+  element.appendChild(img)
   return element;
 }
 
